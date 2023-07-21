@@ -3,13 +3,41 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'Hello World'
+                echo 'build'
+                sh 'mvn clean package'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'test'
+                sh 'mvn test'
+            }
+        }
+        stage('UAT') {
+            steps {
+                echo 'UAT'
+            }
+        }
+        stage('staging') {
+            steps {
+                echo 'staging'
+            }
+        }
+        stage('prod') {
+            steps {
+                echo 'production'
             }
         }
     }
-    post {
+    post { 
+        success {
+            echo 'success'
+        }
+        failure {
+             echo 'failure'
+        }
         always {
-            echo 'I will always say Hello again!'
+             echo 'King Suraj '
         }
     }
 }
