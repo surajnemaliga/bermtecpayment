@@ -12,14 +12,14 @@ pipeline {
                 echo 'sonarqube'
             }
         }
-        stage('UAT') {
+        /*stage('UAT') {
             steps {
                 echo 'UAT'
             }
         }
         stage('staging') {
             steps {
-                echo 'staging'
+                echo 'staging'*/
             }
         }
         stage('prod') {
