@@ -7,10 +7,9 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('test') {
+        stage('sonarqube') {
             steps {
-                echo 'test'
-                sh 'mvn test'
+                echo 'sonarqube'
             }
         }
         stage('UAT') {
