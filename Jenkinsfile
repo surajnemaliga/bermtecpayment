@@ -7,11 +7,14 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('sonarqube') {
+        stages {
+          stage("build & SonarQube analysis") {
             steps {
-                echo 'sonarqube'
+              withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
             }
-        }
+          }
         /*stage('UAT') {
             steps {
                 echo 'UAT'
