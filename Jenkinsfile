@@ -22,15 +22,16 @@ pipeline {
         }
         stage('staging') {
             steps {
-                echo 'staging'*/
+                echo 'staging'
             }
-        }
-        stage('prod') {
+        }*/
+        stage("Quality Gate") {
             steps {
-                echo 'production'
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
             }
-        }
-    }
+          }
     post { 
         success {
             echo 'success'
